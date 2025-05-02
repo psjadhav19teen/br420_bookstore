@@ -6,7 +6,18 @@ from .models import Books
 def index(req):
     allbooks = Books.objects.all()
     print(allbooks)
-    return render(req, "index.html")
+    # b=Books.objects.create(bookid=117,title='mongodb',author='mm',category='Database',price=1000,qty=3,dop='2000-02-21',photo=None)
+    # b.save()
+
+    # b=Books.objects.get(bookid=117)
+    # b.author='mayur k'
+    # b.save()
+
+    # b=Books.objects.filter(bookid=117).first()
+    # b.author='manojkumar'
+    # b.save()
+    context={'allbooks':allbooks}
+    return render(req, "index.html",context)
 
 
 def signup(req):
