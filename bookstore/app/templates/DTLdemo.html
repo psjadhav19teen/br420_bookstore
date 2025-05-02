@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DTL</title>
+  </head>
+  <body>
+    {% block body %}
+
+    <h1>Welcome {{name}}</h1>
+    <p>Login at {{curdatetime}}</p>
+
+     {% if curhour > 12 and curhour < 16 %}
+     <h1><mark>Good Afternoon</mark></h1>
+     {% elif curhour > 16 and curhour < 24 %}
+     <h1><mark>Good Evening</mark></h1>
+     {% else %}
+     <h1><mark>Good Morning</mark></h1>
+     {% endif %}
+     
+    <hr />
+    
+    {% comment %}
+
+    {% with greeting="Good morning" %}
+    <h3>Hello and {{greeting}}!!</h3>
+    {% endwith %}
+    <h3>Hello and {{greeting}}!!</h3>
+
+    {% endcomment %}
+
+  
+
+
+    {% if password %}
+    <h1>Books Details</h1>
+    <h3>Books Title</h3>
+    <ul>
+        <li>Python</li>
+        <li>JS</li>
+        <li>C++</li>
+    </ul>
+    <h3>Books Authors</h3>
+    <ol>
+        {% for a in authors %}
+        <li>{{a}}</li>
+        {% endfor %}
+    </ol>
+
+    <table class="table table-bordered">
+      <thead>
+          <th>Sr.No.</th>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>Issued Book</th>
+      </thead>
+      <tbody>
+        {% for k,v in students.items %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{k}}</td>
+          <td>{{v.name}}</td>
+          <td>{{v.issuedbook}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+    {% else %}
+    <div class="alert alert-danger">
+        <h1>Please take password then only books will be visible</h1>
+    </div>
+    {% endif %}
+
+
+
+
+
+    {% endblock %}
+  </body>
+</html>
