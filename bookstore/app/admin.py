@@ -14,6 +14,7 @@ class BookAdmin(admin.ModelAdmin):
         "price",
         "qty",
         "dop",
+        'photo'
     ]
 
 
